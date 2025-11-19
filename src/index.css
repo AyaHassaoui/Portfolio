@@ -1,0 +1,126 @@
+/* === Tailwind doit TOUJOURS commencer par ces 3 lignes === */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Thème global (couleurs) === */
+@layer base {
+  :root {
+    /* Thème clair : fond chaud + accent émeraude */
+    --background: 36 33% 98%;         /* beige très clair */
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --border: 25 20% 90%;
+    --input: 25 20% 90%;
+
+    --primary: 171 77% 41%;           /* émeraude */
+    --primary-foreground: 210 40% 98%;
+
+    --muted: 24 33% 96%;
+    --muted-foreground: 215 16% 42%;
+
+    --ring: 171 77% 41%;
+
+    --radius: 14px;
+  }
+
+  .dark {
+    /* Thème sombre adapté */
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --border: 215 27% 23%;
+    --input: 215 27% 23%;
+
+    --primary: 171 77% 41%;
+    --primary-foreground: 210 40% 98%;
+
+    --muted: 222 34% 15%;
+    --muted-foreground: 215 20% 70%;
+
+    --ring: 171 77% 41%;
+
+    --radius: 14px;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-dvh bg-background text-foreground;
+  }
+
+  .app-layout {
+    @apply mx-auto flex min-h-dvh max-w-6xl gap-6 px-4 py-8 lg:px-0;
+  }
+
+  .app-sidebar {
+    @apply hidden h-full w-64 shrink-0 flex-col rounded-3xl border bg-card/95 p-6 shadow-soft lg:flex;
+  }
+
+  .app-sidebar-header {
+    @apply flex flex-col gap-1;
+  }
+
+  .app-sidebar-nav {
+    @apply mt-6 flex flex-col gap-1;
+  }
+
+  .app-content {
+    @apply flex min-h-dvh flex-1 flex-col;
+  }
+
+  .app-main {
+    @apply flex-1 rounded-3xl border bg-card/95 p-6 shadow-soft;
+  }
+
+  .app-footer {
+    @apply py-6 text-center text-xs text-muted-foreground;
+  }
+
+  .card {
+    @apply rounded-2xl border border-border/70 bg-card/95 p-6 shadow-soft
+           transition hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border bg-card px-3 py-1 text-xs text-muted-foreground;
+  }
+
+  .muted {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-soft transition hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border bg-card px-3 py-2 text-xs text-muted-foreground hover:bg-muted;
+  }
+
+  .input {
+    @apply w-full rounded-xl border bg-card px-3 py-2 text-sm outline-none
+      focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30;
+  }
+
+  .page-title {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+}
