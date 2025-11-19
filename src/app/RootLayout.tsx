@@ -23,17 +23,32 @@ export default function RootLayout() {
             <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
               Portfolio
             </span>
+
             <h1 className="mt-3 text-xl font-semibold tracking-tight">
               {profile.name}
             </h1>
-            <p className="muted">{profile.role}</p>
+
+            {/* 🖼️ Photo de profil */}
+            {profile.profileImage && (
+              <img
+                src={profile.profileImage}
+                alt={profile.profileImageAlt}
+                className="mt-3 h-24 w-24 rounded-full object-cover border shadow-soft"
+              />
+            )}
+
+            <p className="muted mt-3">{profile.role}</p>
             <p className="muted mt-1 text-xs">{profile.location}</p>
 
             {/* ⭐ BLOC CONTACT TRÈS VISIBLE */}
             <div className="mt-4 rounded-2xl border bg-card/80 p-3 text-sm">
-              <p className="font-semibold mb-1">Contact direct</p>
-              <p>📩 <span className="font-mono">{profile.email}</span></p>
-              <p>📞 <span className="font-mono">{profile.phone}</span></p>
+              <p className="mb-1 font-semibold">Contact direct</p>
+              <p>
+                📩 <span className="font-mono">{profile.email}</span>
+              </p>
+              <p>
+                📞 <span className="font-mono">{profile.phone}</span>
+              </p>
             </div>
           </div>
 

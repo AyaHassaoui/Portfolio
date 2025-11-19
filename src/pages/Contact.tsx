@@ -9,13 +9,47 @@ export default function Contact() {
       </p>
 
       <div className="space-y-2 text-lg">
-        <p><strong>📩 E-mail :</strong> <a href={`mailto:${profile.email}`} className="text-emerald-600 hover:underline">{profile.email}</a></p>
-        <p><strong>📞 Téléphone :</strong> <a href={`tel:${profile.phone}`} className="text-emerald-600 hover:underline">{profile.phone}</a></p>
+        <p>
+          <strong>📩 E-mail :</strong>
+          <a href={`mailto:${profile.email}`} className="text-emerald-600 hover:underline ml-1">
+            {profile.email}
+          </a>
+        </p>
+
+        <p>
+          <strong>📞 Téléphone :</strong>
+          <a href={`tel:${profile.phone}`} className="text-emerald-600 hover:underline ml-1">
+            {profile.phone}
+          </a>
+        </p>
+
+        <p>
+          <strong>🔗 LinkedIn :</strong>
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-emerald-600 hover:underline ml-1"
+          >
+            Profil LinkedIn
+          </a>
+        </p>
+
+        <p>
+          <strong>💻 GitHub :</strong>
+          <a
+            href="https://github.com/AyaHassaoui"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-emerald-600 hover:underline ml-1"
+          >
+            AyaHassaoui
+          </a>
+        </p>
       </div>
 
-      <div className="mt-8 text-sm text-muted-foreground">
-        💡 Formulaire d’envoi désactivé (démo). Si tu veux, je peux activer l'envoi réel via EmailJS.
-      </div>
+
+
     </div>
   );
 }

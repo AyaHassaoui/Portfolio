@@ -31,10 +31,11 @@ export default function Home() {
       </div>
 
       <div className="card flex h-full items-center justify-center">
-        <div className="space-y-2 text-center">
-          <div className="pill mx-auto">{profile.location}</div>
-          <p className="muted">Disponible pour stages & projets</p>
-        </div>
+        <img
+            src="/public/assets/img_3.png"
+            alt="Technologies éducatives"
+            className="rounded-xl object-cover w-[90%] h-[85%]"
+          />
       </div>
     </section>
   );
