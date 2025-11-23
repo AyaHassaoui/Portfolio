@@ -1,61 +1,39 @@
 import type { Certification } from "@/data/certifications";
-import clsx from "clsx";
-
-function mmYYYY(s: string) {
-  const [y, m] = s.split("-");
-  return `${m}/${y}`;
-}
+import { useState } from "react";
 
 export default function CertificationCard({ c }: { c: Certification }) {
-  const isExpired =
-    c.status === "expired" || (c.expiryDate && c.expiryDate < c.issueDate);
+  const [open, setOpen] = useState(false);
 
   return (
-    <article
-      className={clsx("card flex gap-4", isExpired && "opacity-80")}
-      aria-label={`Certification ${c.title}`}
-    >
+    <article className="border rounded-xl p-4 hover:shadow transition bg-card">
+      {/* Image miniature (cliquable) */}
       {c.image && (
         <img
           src={c.image}
-          alt={c.imageAlt ?? c.title}
-          width={200}
-          height={120}
-          loading="lazy"
-          className="h-20 w-40 rounded-xl object-cover"
+          alt={c.imageAlt}
+          className="w-28 h-28 object-cover rounded cursor-pointer"
+          onClick={() => setOpen(true)}
         />
       )}
 
-      <div className="flex flex-1 flex-col justify-between gap-1">
-        <div>
-          <h3 className="font-semibold leading-snug">{c.title}</h3>
-          <p className="muted">
-            {c.issuer} • {mmYYYY(c.issueDate)}
-          </p>
-          {c.skills?.length ? (
-            <p className="muted mt-1">
-              Compétences : {c.skills.join(", ")}
-            </p>
-          ) : null}
-        </div>
+      <h3 className="font-semibold mt-2">{c.title}</h3>
+      <p className="text-sm text-muted-foreground">
+        {c.issuer} • {c.issueDate}
+      </p>
 
-        <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
-          {c.credentialUrl && (
-            <a
-              href={c.credentialUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="primary-link"
-            >
-              Voir le certificat
-            </a>
-          )}
-          {isExpired && <span className="text-amber-500">Expirée</span>}
-          {c.status === "revoked" && (
-            <span className="text-red-500">Révoquée</span>
-          )}
+      {/* Popup image agrandie */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+          onClick={() => setOpen(false)}
+        >
+          <img
+            src={c.image}
+            alt={c.imageAlt}
+            className="max-w-3xl max-h-[90vh] w-auto rounded-lg shadow-2xl border bg-white"
+          />
         </div>
-      </div>
+      )}
     </article>
   );
 }
